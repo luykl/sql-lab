@@ -24,15 +24,20 @@ WHERE ship_country ='France';
 -- 10
 DELETE FROM order_details WHERE quantity = 1;
 -- 11
-SELECT AVG(quantity) FROM order_details;
-SELECT MAX(quantity) FROM order_details;
-SELECT MIN(quantity) FROM order_details;
+SELECT AVG(quantity) AS "avg qty",
+MAX(quantity) AS "max qty",
+MIN(quantity) AS "min qty"
+FROM order_details;
 -- 12
 SELECT AVG(quantity) FROM order_details GROUP BY order_id;
 SELECT MAX(quantity) FROM order_details GROUP BY order_id;
 SELECT MIN(quantity) FROM order_details GROUP BY order_id;
 -- 13
-SELECT customer_id FROM orders WHERE order_id = 10290;
+SELECT AVG(quantity) AS "avg qty",
+MAX(quantity) AS "max qty",
+MIN(quantity) AS "min qty"
+FROM order_details
+GROUP BY order_id;
 -- 14
 -- 15
 -- 16
