@@ -39,7 +39,26 @@ MIN(quantity) AS "min qty"
 FROM order_details
 GROUP BY order_id;
 -- 14
+SELECT * FROM customers
+INNER JOIN orders ON customers.customer_id = orders.customer_id;
+
+SELECT * FROM customers
+LEFT JOIN orders ON customers.customer_id = orders.customer_id;
+
+SELECT * FROM customers
+RIGHT JOIN orders ON customers.customer_id = orders.customer_id;
 -- 15
+SELECT orders.ship_city, orders.ship_country FROM orders
+JOIN employees ON orders.employee_id = employees.employee_id
+WHERE employees.city = 'London';
 -- 16
+SELECT orders.ship_name FROM orders
+JOIN order_details ON orders.order_id = order_details.order_id
+JOIN products ON order_details.product_id = products.product_id
+WHERE products.discontinued = 1;
 -- 17
+SELECT employees.first_name FROM employees WHERE reports_to IS null;
 -- 18
+SELECT subordinate.first_name FROM employees AS subordinate
+JOIN employees AS manager ON subordinate.reports_to = manager.employee_id
+WHERE manager.first_name = 'Andrew'
